@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Azure Site</title>
 
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: #4facfe;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🚀 Hello Azure</h1>
+    <p>Website kamu sudah live!</p>
+    <p id="time"></p>
+
+    <button onclick="klik()">Klik Aku 😄</button>
+</div>
+
+<script>
+function klik() {
+    alert("Berhasil deploy ke Azure! 🎉");
+}
+
+function waktu() {
+    const now = new Date();
+    document.getElementById("time").innerText =
+        now.toLocaleString();
+}
+
+setInterval(waktu, 1000);
+waktu();
+</script>
+
+</body>
+</html>
