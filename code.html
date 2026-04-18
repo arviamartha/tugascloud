@@ -3,71 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Azure Site</title>
+<title>Pop Balloon Game</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #74ebd5, #acb6e5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    overflow: hidden;
+    text-align: center;
+    color: white;
+  }
 
-    .card {
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
+  h1 { margin: 10px; }
 
-    h1 {
-        color: #333;
-    }
+  #score, #time {
+    font-size: 18px;
+    margin: 5px;
+  }
 
-    button {
-        margin-top: 15px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 10px;
-        background: #4facfe;
-        color: white;
-        cursor: pointer;
-    }
+  #gameArea {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+  }
 
-    button:hover {
-        opacity: 0.8;
-    }
+  .balloon {
+    position: absolute;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  .balloon:active {
+    transform: scale(1.3);
+  }
+
+  #startBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #startBtn:hover {
+    opacity: 0.8;
+  }
 </style>
-
 </head>
 
 <body>
 
-<div class="card">
-    <h1>🚀 Hello Azure</h1>
-    <p>Website kamu sudah live!</p>
-    <p id="time"></p>
+<h1>🎈 Pop Balloon Game</h1>
+<div id="score">Score: 0</div>
+<div id="time">Time: 20</div>
+<button id="startBtn" onclick="startGame()">Start Game</button>
 
-    <button onclick="klik()">Klik Aku 😄</button>
-</div>
+<div id="gameArea"></div>
 
 <script>
-function klik() {
-    alert("Berhasil deploy ke Azure! 🎉");
+let score = 0;
+let timeLeft = 20;
+let gameInterval;
+let spawnInterval;
+
+function startGame() {
+  score = 0;
+  timeLeft = 20;
+  document.getElementById("score").innerText = "Score: " + score;
+  document.getElementById("time").innerText = "Time: " + timeLeft;
+
+  gameInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("time").innerText = "Time: " + timeLeft;
+
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }, 1000);
+
+  spawnInterval = setInterval(spawnBalloon, 700);
 }
 
-function waktu() {
-    const now = new Date();
-    document.getElementById("time").innerText =
-        now.toLocaleString();
+function spawnBalloon() {
+  const gameArea = document.getElementById("gameArea");
+  const balloon = document.createElement("div");
+
+  balloon.classList.add("balloon");
+  balloon.innerText = "🎈";
+
+  const x = Math.random() * (window.innerWidth - 50);
+  const y = Math.random() * (window.innerHeight - 150);
+
+  balloon.style.left = x + "px";
+  balloon.style.top = y + "px";
+
+  balloon.onclick = () => {
+    score++;
+    document.getElementById("score").innerText = "Score: " + score;
+    balloon.remove();
+  };
+
+  gameArea.appendChild(balloon);
+
+  setTimeout(() => {
+    balloon.remove();
+  }, 1500);
 }
 
-setInterval(waktu, 1000);
-waktu();
+function endGame() {
+  clearInterval(gameInterval);
+  clearInterval(spawnInterval);
+  alert("Game Over! Score kamu: " + score);
+}
 </script>
 
 </body>
