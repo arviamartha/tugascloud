@@ -8,9 +8,9 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
 }
 
 /* NAV */
@@ -18,59 +18,71 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 /* HERO */
 .hero {
-  text-align: center;
-  padding: 80px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px;
+  flex-wrap: wrap;
 }
 
 .hero img {
   width: 160px;
   border-radius: 50%;
-  border: 4px solid white;
-  margin-bottom: 20px;
 }
 
-.hero h1 span {
-  color: #ffd369;
+.hero-text h1 {
+  margin: 0;
+}
+
+.hero-text span {
+  color: #2563eb;
 }
 
 /* SECTION */
 section {
-  padding: 60px 40px;
-}
-
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  padding: 50px 40px;
 }
 
 /* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 15px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+/* TITLE */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* LIST */
+ul {
+  padding-left: 20px;
 }
 
 /* BUTTON */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
-  background: #ffd369;
-  color: black;
-  border-radius: 10px;
+  padding: 8px 15px;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
   text-decoration: none;
-  margin-top: 10px;
 }
 </style>
 </head>
@@ -78,24 +90,29 @@ section {
 <body>
 
 <nav>
-  <div>🚀 Arvia</div>
+  <div><b>Arvia</b></div>
   <div>Portfolio</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <img src="foto.jpg" alt="Profile">
-  <h1>Hi, I'm <span>Arvia</span> 👋</h1>
-  <p>Business Analyst | Information Systems Student</p>
+  <div class="hero-text">
+    <h1>Arvia <span>Marthina</span></h1>
+    <p>Business Analyst | Information Systems Student</p>
+    <p>IPK: <b>3.74</b></p>
+  </div>
 </div>
 
 <!-- ABOUT -->
 <section>
   <h2>About Me</h2>
   <p>
-    Mahasiswa Sistem Informasi Telkom University dengan minat pada analisis data,
-    proses bisnis, dan pengembangan sistem. Berpengalaman sebagai Business Analyst
-    Intern di Central Insight dan aktif dalam pengembangan website GokilTech.
+    Mahasiswa Sistem Informasi Telkom University semester 6 dengan minat pada
+    analisis data, proses bisnis, dan pengembangan sistem. Berpengalaman sebagai
+    Business Analyst Intern di Central Insight serta aktif dalam pengembangan
+    website di GokilTech. Memiliki kemampuan analitis, komunikasi, dan teamwork
+    yang baik.
   </p>
 </section>
 
@@ -103,10 +120,67 @@ section {
 <section>
   <h2>Skills</h2>
   <div class="grid">
-    <div class="card">SQL & Database</div>
-    <div class="card">Business Analysis</div>
-    <div class="card">Market Research</div>
-    <div class="card">Problem Solving</div>
+    <div class="card">
+      <b>Tools</b>
+      <ul>
+        <li>MySQL</li>
+        <li>Microsoft Excel</li>
+        <li>Google Sheets</li>
+        <li>Draw.io</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <b>Technical</b>
+      <ul>
+        <li>SQL Dasar</li>
+        <li>UML, BPMN</li>
+        <li>System Analysis</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <b>Business & Analysis</b>
+      <ul>
+        <li>Market Research</li>
+        <li>Data Analysis</li>
+        <li>Business Process Analysis</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <b>Soft Skills</b>
+      <ul>
+        <li>Problem Solving</li>
+        <li>Communication</li>
+        <li>Teamwork</li>
+        <li>Adaptability</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+  <h2>Experience</h2>
+
+  <div class="card">
+    <b>Business Analyst Intern — Central Insight</b>
+    <p>Jul 2025 – Sep 2025</p>
+    <ul>
+      <li>Melakukan market research dan market sizing</li>
+      <li>Menganalisis data untuk insight bisnis</li>
+      <li>Menyusun laporan untuk pengambilan keputusan</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <b>Teaching Assistant — Basis Data</b>
+    <p>2024 – 2025</p>
+    <ul>
+      <li>Membantu mahasiswa memahami SQL</li>
+      <li>Mendampingi praktikum database</li>
+    </ul>
   </div>
 </section>
 
@@ -116,28 +190,38 @@ section {
   <div class="grid">
 
     <div class="card">
-      <h3>🌐 GokilTech</h3>
-      <p>Website development project.</p>
+      <h3>GokilTech</h3>
+      <p>Pengembangan website tim teknologi.</p>
       <a class="btn" href="https://gokiltech.com" target="_blank">View</a>
     </div>
 
     <div class="card">
-      <h3>📊 Business Analyst</h3>
-      <p>Market research & data analysis internship.</p>
+      <h3>Business Analysis Project</h3>
+      <p>Analisis proses bisnis dan data.</p>
     </div>
 
     <div class="card">
-      <h3>🎮 Mini Game</h3>
-      <p>Interactive HTML project.</p>
+      <h3>Mini HTML Game</h3>
+      <p>Project interaktif menggunakan JavaScript.</p>
     </div>
 
   </div>
+</section>
+
+<!-- ORGANIZATION -->
+<section>
+  <h2>Organization</h2>
+  <ul>
+    <li>Himpunan Mahasiswa Sistem Informasi</li>
+    <li>Google Developer Student Clubs</li>
+  </ul>
 </section>
 
 <!-- CONTACT -->
 <section>
   <h2>Contact</h2>
   <p>Email: arviamartina6@gmail.com</p>
+  <p>Phone: +62 821-2502-2920</p>
 </section>
 
 </body>
