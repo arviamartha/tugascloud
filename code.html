@@ -3,123 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pop Balloon Game</title>
+<title>Arvia Portfolio</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    overflow: hidden;
-    text-align: center;
-    color: white;
-  }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
 
-  h1 { margin: 10px; }
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
 
-  #score, #time {
-    font-size: 18px;
-    margin: 5px;
-  }
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
 
-  #gameArea {
-    position: relative;
-    width: 100%;
-    height: 80vh;
-  }
+.hero img {
+  width: 160px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-bottom: 20px;
+}
 
-  .balloon {
-    position: absolute;
-    font-size: 40px;
-    cursor: pointer;
-    transition: transform 0.1s;
-  }
+.hero h1 span {
+  color: #ffd369;
+}
 
-  .balloon:active {
-    transform: scale(1.3);
-  }
+/* SECTION */
+section {
+  padding: 60px 40px;
+}
 
-  #startBtn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    background: white;
-    color: #333;
-    font-weight: bold;
-    cursor: pointer;
-  }
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
 
-  #startBtn:hover {
-    opacity: 0.8;
-  }
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ffd369;
+  color: black;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 10px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>🎈 Pop Balloon Game</h1>
-<div id="score">Score: 0</div>
-<div id="time">Time: 20</div>
-<button id="startBtn" onclick="startGame()">Start Game</button>
+<nav>
+  <div>🚀 Arvia</div>
+  <div>Portfolio</div>
+</nav>
 
-<div id="gameArea"></div>
+<!-- HERO -->
+<div class="hero">
+  <img src="foto.jpg" alt="Profile">
+  <h1>Hi, I'm <span>Arvia</span> 👋</h1>
+  <p>Business Analyst | Information Systems Student</p>
+</div>
 
-<script>
-let score = 0;
-let timeLeft = 20;
-let gameInterval;
-let spawnInterval;
+<!-- ABOUT -->
+<section>
+  <h2>About Me</h2>
+  <p>
+    Mahasiswa Sistem Informasi Telkom University dengan minat pada analisis data,
+    proses bisnis, dan pengembangan sistem. Berpengalaman sebagai Business Analyst
+    Intern di Central Insight dan aktif dalam pengembangan website GokilTech.
+  </p>
+</section>
 
-function startGame() {
-  score = 0;
-  timeLeft = 20;
-  document.getElementById("score").innerText = "Score: " + score;
-  document.getElementById("time").innerText = "Time: " + timeLeft;
+<!-- SKILLS -->
+<section>
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card">SQL & Database</div>
+    <div class="card">Business Analysis</div>
+    <div class="card">Market Research</div>
+    <div class="card">Problem Solving</div>
+  </div>
+</section>
 
-  gameInterval = setInterval(() => {
-    timeLeft--;
-    document.getElementById("time").innerText = "Time: " + timeLeft;
+<!-- PROJECT -->
+<section>
+  <h2>Projects</h2>
+  <div class="grid">
 
-    if (timeLeft <= 0) {
-      endGame();
-    }
-  }, 1000);
+    <div class="card">
+      <h3>🌐 GokilTech</h3>
+      <p>Website development project.</p>
+      <a class="btn" href="https://gokiltech.com" target="_blank">View</a>
+    </div>
 
-  spawnInterval = setInterval(spawnBalloon, 700);
-}
+    <div class="card">
+      <h3>📊 Business Analyst</h3>
+      <p>Market research & data analysis internship.</p>
+    </div>
 
-function spawnBalloon() {
-  const gameArea = document.getElementById("gameArea");
-  const balloon = document.createElement("div");
+    <div class="card">
+      <h3>🎮 Mini Game</h3>
+      <p>Interactive HTML project.</p>
+    </div>
 
-  balloon.classList.add("balloon");
-  balloon.innerText = "🎈";
+  </div>
+</section>
 
-  const x = Math.random() * (window.innerWidth - 50);
-  const y = Math.random() * (window.innerHeight - 150);
-
-  balloon.style.left = x + "px";
-  balloon.style.top = y + "px";
-
-  balloon.onclick = () => {
-    score++;
-    document.getElementById("score").innerText = "Score: " + score;
-    balloon.remove();
-  };
-
-  gameArea.appendChild(balloon);
-
-  setTimeout(() => {
-    balloon.remove();
-  }, 1500);
-}
-
-function endGame() {
-  clearInterval(gameInterval);
-  clearInterval(spawnInterval);
-  alert("Game Over! Score kamu: " + score);
-}
-</script>
+<!-- CONTACT -->
+<section>
+  <h2>Contact</h2>
+  <p>Email: arviamartina6@gmail.com</p>
+</section>
 
 </body>
 </html>
